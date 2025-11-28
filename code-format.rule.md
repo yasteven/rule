@@ -31,6 +31,7 @@
 // user to use auto-completes. I shoot for same-length instance 
 // names in my structs. I like 4~8 char instance variables
 
+//==================================================================
 pub struct DontNeedSingleCharCapitalizedInStructNameEh
 {   pub four : String
   , pub letr : u64
@@ -39,32 +40,33 @@ pub struct DontNeedSingleCharCapitalizedInStructNameEh
   , pub real : u8 // ugh why isn't it u08
   , pub nice : i16 // ugh why isn't it s16 Unsigned and Signed
 }
-
+//==================================================================
 pub fn fn_exmple_put_f_or_fn_as_naming_for_a_function
 (   arg : int
   , gra : tni
-  , cfg : st_cfg_for_fn_exmple_put_f_or_fn_as_naming_for_a_func
+  , cfg : DontNeedSingleCharCapitalizedInStructNameEh
 ) -> Res<()>
-{ log::debug!("A debug print for every function entry makes tracing easy"); // ( and ) on same column is fine
+//==================================================================
+{ log::debug!
+  ( "A debug print for every function entry makes tracing easy"
+  ); // I find that without this comment , no extra \n is needed
   log::trace
   ( "Use traces instead of comments inside of scopes {} {} {}" 
-  , "The function signature adds a 'tab' for the ',', but here i dont" // but still keep the ',' on the same columns!
+  , "The fn signature adds a 'tab' for the ',', but here i dont" 
+  , "but always still keep the ',' on the same columns!"
   , "It's really up to your preferece, i like it like this"
   , format!
-    (   "But there is an advantage for the extra spaces: {} {} "
-      , "Sometimes the code editor is not happy about code folding when the '(' ',' and ')' are all on the same column "
-      , "Many seem fine these days"
+    (   "But there is an advantage for the extra spaces:{} {} {} {}"
+      , "Sometimes the code editor is not happy about code folding "
+      , "when the '(' ',' and ')' are all on the same column. Many "
+      , "seem fine these days. and notice this is a format trick to"
+      , "keep all my lines below 70 colimns? zero cost abstraction?"
     )
   );
 
-  log::debug!("An additional debug print for every function exit make tracing trivial");
+  log::debug!("An debug print at all function exits => EZ tracing");
+  // It's okay to do 1 row {} , () if they all are on the same line!
   Ok(()) // rated R
-
-  log::debug!
-  ( "Exit: tracing made trivial with a final debug"
-  );
-
-  Ok(())
 }
 
 int main()
